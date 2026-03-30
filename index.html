@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You Really Left Wing?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- INTRO -->
+        <section id="intro">
+            <h1>Are You Really Left Wing?</h1>
+            <p class="subtitle">Or right wing, for that matter?</p>
+            <div class="intro-text">
+                <p>We tend to think of politics as a single line from left to right. But "left" and "right" mean very different things depending on what you're talking about.</p>
+                <p>This quiz measures where you fall on <strong>12 independent scales</strong> &mdash; from economics to governance to personal freedom. You might be surprised how much you agree with people you thought you disagreed with.</p>
+                <p>There are no right or wrong answers. Pick whichever feels most true to you.</p>
+            </div>
+            <button id="start-btn" class="btn btn-primary">Start the Quiz</button>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="quiz" class="hidden">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p class="progress-text" id="progress-text"></p>
+            <div class="question-card" id="question-card">
+                <h2 id="question-text"></h2>
+                <div id="options-container"></div>
+            </div>
+            <div class="quiz-nav">
+                <button id="back-btn" class="btn btn-secondary" disabled>Back</button>
+                <button id="next-btn" class="btn btn-primary" disabled>Next</button>
+            </div>
+        </section>
+
+        <!-- RESULTS -->
+        <section id="results" class="hidden">
+            <h1>Your Results</h1>
+            <p class="results-intro">Here's where you landed on each scale. Remember: there's no single "left" or "right" &mdash; just a collection of views that make you <em>you</em>.</p>
+            <p class="colour-note">Colour guide: <span class="red-label">red = traditionally left</span> &middot; <span class="blue-label">blue = traditionally right</span> (international convention)</p>
+            <div id="results-bars"></div>
+            <div id="summary" class="summary-card"></div>
+            <button id="retake-btn" class="btn btn-primary">Retake the Quiz</button>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

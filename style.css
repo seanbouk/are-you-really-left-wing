@@ -1,0 +1,353 @@
+:root {
+    --red: #c0392b;
+    --red-light: #e8b4b0;
+    --blue: #2c5aa0;
+    --blue-light: #afc4e0;
+    --purple-dark: #4a2d6b;
+    --purple-light: #7b5ea7;
+    --bg: #f0f0f2;
+    --card: #ffffff;
+    --border: #ffffff;
+    --text: #2c2c2c;
+    --text-light: #666666;
+    --text-muted: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ─── INTRO ─── */
+
+#intro {
+    text-align: center;
+    padding-top: 3rem;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.25rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--purple-light);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.intro-text {
+    text-align: left;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.intro-text p {
+    margin-bottom: 1rem;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ─── BUTTONS ─── */
+
+.btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, opacity 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--purple-dark);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--purple-light);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--purple-dark);
+    border: 2px solid var(--purple-dark);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--purple-dark);
+    color: #fff;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ─── PROGRESS ─── */
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--red), var(--purple-light), var(--blue));
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* ─── QUESTION CARD ─── */
+
+.question-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.5rem;
+}
+
+.question-card h2 {
+    font-size: 1.1rem;
+    color: var(--purple-dark);
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+/* ─── OPTIONS ─── */
+
+.option-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.6rem;
+    background: var(--bg);
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    line-height: 1.4;
+}
+
+.option-btn:last-child {
+    margin-bottom: 0;
+}
+
+.option-btn:hover {
+    border-color: var(--purple-light);
+    background: #f8f4fc;
+}
+
+.option-btn.selected {
+    border-color: var(--purple-dark);
+    background: #ece4f5;
+    font-weight: 600;
+}
+
+/* ─── QUIZ NAV ─── */
+
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* ─── RESULTS ─── */
+
+#results h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.results-intro {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.colour-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.red-label {
+    color: var(--red);
+    font-weight: 600;
+}
+
+.blue-label {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+/* ─── RESULT BAR ─── */
+
+.result-scale {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.scale-label-left {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--red);
+}
+
+.scale-label-right {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--blue);
+}
+
+.bar-track {
+    position: relative;
+    height: 24px;
+    border-radius: 12px;
+    background: linear-gradient(to right, var(--red) 0%, var(--red-light) 25%, #e8e0ec 50%, var(--blue-light) 75%, var(--blue) 100%);
+    margin-bottom: 0.4rem;
+}
+
+.bar-marker {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--card);
+    border: 3px solid var(--purple-dark);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: left 0.5s ease;
+}
+
+.scale-description {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* ─── SUMMARY ─── */
+
+.summary-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.summary-card h2 {
+    color: var(--purple-dark);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.summary-card p {
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.summary-card p:last-child {
+    margin-bottom: 0;
+}
+
+#retake-btn {
+    display: block;
+    margin: 1.5rem auto 0;
+}
+
+/* ─── RESPONSIVE ─── */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .question-card {
+        padding: 1rem;
+    }
+
+    .question-card h2 {
+        font-size: 1rem;
+    }
+
+    .option-btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .result-scale {
+        padding: 1rem;
+    }
+}
