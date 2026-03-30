@@ -222,6 +222,7 @@ const scales = [
 let flatQuestions = [];
 let answers = {};
 let currentIndex = 0;
+let scaleResults = []; // stored after results calculated, for sharing
 
 // ─── DOM ───
 
@@ -238,6 +239,7 @@ const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
 const resultsBars = document.getElementById("results-bars");
 const summaryEl = document.getElementById("summary");
+const shareBtn = document.getElementById("share-btn");
 
 // ─── INIT ───
 
@@ -245,6 +247,7 @@ startBtn.addEventListener("click", startQuiz);
 backBtn.addEventListener("click", prevQuestion);
 nextBtn.addEventListener("click", nextQuestion);
 retakeBtn.addEventListener("click", resetQuiz);
+shareBtn.addEventListener("click", shareResults);
 
 function startQuiz() {
     // Flatten all questions, keeping a reference to their scale
@@ -355,6 +358,7 @@ function showResults() {
     quizEl.classList.add("hidden");
     resultsEl.classList.remove("hidden");
     resultsBars.innerHTML = "";
+    scaleResults = [];
 
     let centreCount = 0;
 
@@ -374,6 +378,7 @@ function showResults() {
         const rawPct = ((avg + 2) / 4) * 100; // 0 to 100
         const pct = 5 + (rawPct / 100) * 90; // clamp to 5%-95% so marker stays inside track
 
+        scaleResults.push(avg);
         if (Math.abs(avg) <= 1) centreCount++;
 
         // Build result card
@@ -447,6 +452,35 @@ function getDescription(scaleId, avg) {
     if (strength < 1) return `You lean slightly towards ${direction}.`;
     if (strength < 1.5) return `You lean towards ${direction}.`;
     return `You lean strongly towards ${direction}.`;
+}
+
+// ─── SHARE ───
+
+function scoreToEmoji(avg) {
+    // avg ranges from -2 (left) to +2 (right)
+    if (avg <= -1.5) return "\u2764\uFE0F";   // ❤️
+    if (avg <= -0.5) return "\uD83D\uDD34";    // 🔴
+    if (avg < 0.5)   return "\u26AA";           // ⚪
+    if (avg < 1.5)   return "\uD83D\uDD35";    // 🔵
+    return "\uD83D\uDC99";                      // 💙
+}
+
+function shareResults() {
+    const emojis = scaleResults.map(scoreToEmoji).join("");
+    const text = `Are You Really Left Wing?\n${emojis}\nhttps://seanbouk.github.io/are-you-really-left-wing/`;
+
+    navigator.clipboard.writeText(text).then(() => {
+        // Show toast
+        let toast = document.querySelector(".share-toast");
+        if (!toast) {
+            toast = document.createElement("p");
+            toast.className = "share-toast";
+            toast.textContent = "Copied to clipboard!";
+            shareBtn.parentElement.appendChild(toast);
+        }
+        toast.classList.add("visible");
+        setTimeout(() => toast.classList.remove("visible"), 2000);
+    });
 }
 
 // ─── RESET ───
